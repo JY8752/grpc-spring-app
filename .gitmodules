@@ -1,0 +1,3 @@
+[submodule "test-proto"]
+	path = test-proto
+	url = git@github.com:JY8752/test-proto.git
