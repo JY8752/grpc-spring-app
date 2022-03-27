@@ -9,5 +9,4 @@ class GrpcSpringAppApplicationTests {
 	@Test
 	fun contextLoads() {
 	}
-
 }
