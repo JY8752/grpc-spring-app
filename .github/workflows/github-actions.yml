@@ -25,7 +25,7 @@ jobs:
       #      - name: git submodule update
       #        run: git submodule update --recursive
       - name: generateProto
-        run: ./gradlew clean generateProto
+        run: ./gradlew generateProto --stacktrace
       - name: ktlint check
         run: ./gradlew ktlintCheck
       - name: start docker
