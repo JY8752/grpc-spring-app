@@ -8,5 +8,4 @@ import org.springframework.context.annotation.Primary
 @Primary
 @Configuration
 @ConfigurationProperties(prefix = "app.datasource.mongodb")
-class MongoProperty : MongoProperties() {
-}
+class MongoProperty : MongoProperties()

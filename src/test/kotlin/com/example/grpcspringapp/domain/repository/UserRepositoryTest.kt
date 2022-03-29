@@ -14,7 +14,7 @@ class UserRepositoryTest(
 ) : FunSpec({
     context("正常系") {
         test("find and save") {
-            //save
+            // save
             val user = User(
                 name = "test",
                 gender = Gender.FEMALE.number
@@ -26,7 +26,7 @@ class UserRepositoryTest(
             assertUser(response) { it.gender == Gender.FEMALE.number }
             assertUser(response) { it.enabled }
 
-            //find
+            // find
             val find = userRepository.findById(response.awaitSingle().id.toString())
             assertUser(find) { it.id != null }
             assertUser(find) { it.name == "test" }
@@ -34,7 +34,6 @@ class UserRepositoryTest(
             assertUser(find) { it.enabled }
         }
     }
-
 })
 
 private fun assertUser(response: Mono<User>, callback: (User) -> Boolean) {

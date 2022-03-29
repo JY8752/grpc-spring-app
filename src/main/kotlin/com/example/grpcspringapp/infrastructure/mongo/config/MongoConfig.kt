@@ -25,14 +25,14 @@ class MongoConfig(
     }
 
     override fun reactiveMongoClient(): MongoClient {
-        //カスタム設定が必要な場合は下記で設定する
+        // カスタム設定が必要な場合は下記で設定する
         val mongoClientSettings = MongoClientSettings.builder()
             .applyConnectionString(ConnectionString(this.mongoProperty.uri))
             .build()
         return MongoClients.create(mongoClientSettings)
     }
 
-    //_classフィールドが入らないようになると思う
+    // _classフィールドが入らないようになると思う
     override fun mappingMongoConverter(
         databaseFactory: ReactiveMongoDatabaseFactory,
         customConversions: MongoCustomConversions,
