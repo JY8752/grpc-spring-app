@@ -23,11 +23,11 @@ jobs:
         run: chmod +x gradlew
       #      - name: git submodule update
       #        run: git submodule update --recursive
-      #      - name: generateProto
-      #        run: ./gradlew generateProto
+      - name: generateProto
+        run: ./gradlew clean generateProto
       - name: ktlint check
         run: ./gradlew ktlintCheck
       - name: start docker
         run: docker-compose up -d
       - name: Test with Gradle
-        run: ./gradlew clean generateProto test
+        run: ./gradlew test
