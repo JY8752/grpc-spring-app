@@ -3,19 +3,31 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    types:
+      - opened
+      - synchronize
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 17
-        uses: actions/setup-java@v1
         with:
-          java-version: 17
+          submodules: recursive
+      - name: update submodule
+        run: git submodule update --remote --recursive
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+          cache: 'gradle'
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      - name: generateProto
+        run: ./gradlew generateProto
       - name: ktlint check
         run: ./gradlew ktlintCheck
+      - name: start docker
+        run: docker-compose up -d
       - name: Test with Gradle
         run: ./gradlew test
