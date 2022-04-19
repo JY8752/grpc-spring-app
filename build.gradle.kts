@@ -92,11 +92,11 @@ sourceSets["main"].java.srcDirs(
 )
 //protocでコード生成するためのタスク
 protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:3.15.1" } //使用するprotocのパッケージとバージョン
+    protoc { artifact = "com.google.protobuf:protoc:3.15.1:osx-x86_64" } //使用するprotocのパッケージとバージョン
     //kotlinのコードがjavaのコードに依存しているところがあるためjavaとkotlin両方必要
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.36.0" //javaでのgRPCに関するコードを生成するためのプラグイン指定
+            artifact = "io.grpc:protoc-gen-grpc-java:1.36.0:osx-x86_64" //javaでのgRPCに関するコードを生成するためのプラグイン指定
         }
         id("grpckt") {
             artifact = "io.grpc:protoc-gen-grpc-kotlin:1.0.0:jdk7@jar" //kotlinでのgRPCに関するコードを生成するためのプラグイン指定
