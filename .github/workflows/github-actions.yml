@@ -64,6 +64,11 @@ jobs:
       ECS_CONTAINER_NAME: spring-grpc-app
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      #submodule update
+      - name: update submodule
+        run: git submodule update --remote --recursive
       # 別jobで作ったファイルをダウンロードする
       - uses: actions/download-artifact@v1
         with:
