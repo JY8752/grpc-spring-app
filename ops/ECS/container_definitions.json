@@ -1,6 +1,10 @@
 {
-	"ipcMode": null,
+	"family": "spring-grpc-app",
 	"executionRoleArn": "arn:aws:iam::871011054125:role/ecs-task-execution",
+	"networkMode": "awsvpc",
+	"requiresCompatibilities": [ "FARGATE" ],
+	"cpu": "256",
+	"memory": "512",
 	"containerDefinitions": [
 		{
 			"name": "spring-grpc-app",
@@ -21,56 +25,5 @@
 				}
 			]
 		}
-	],
-	"placementConstraints": [],
-	"memory": "512",
-	"taskRoleArn": null,
-	"compatibilities": [
-	  "EC2",
-	  "FARGATE"
-	],
-	"family": "spring-grpc-app",
-	"requiresAttributes": [
-	  {
-		"targetId": null,
-		"targetType": null,
-		"value": null,
-		"name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-	  },
-	  {
-		"targetId": null,
-		"targetType": null,
-		"value": null,
-		"name": "ecs.capability.execution-role-awslogs"
-	  },
-	  {
-		"targetId": null,
-		"targetType": null,
-		"value": null,
-		"name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-	  },
-	  {
-		"targetId": null,
-		"targetType": null,
-		"value": null,
-		"name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-	  },
-	  {
-		"targetId": null,
-		"targetType": null,
-		"value": null,
-		"name": "ecs.capability.task-eni"
-	  }
-	],
-	"pidMode": null,
-	"requiresCompatibilities": [
-	  "FARGATE"
-	],
-	"networkMode": "awsvpc",
-	"runtimePlatform": null,
-	"cpu": "256",
-	"status": "ACTIVE",
-	"inferenceAccelerators": null,
-	"proxyConfiguration": null,
-	"volumes": []
+	]
 }

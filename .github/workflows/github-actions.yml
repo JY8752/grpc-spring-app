@@ -105,9 +105,9 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
           # GITHUB_SHAなど、最初から使える環境変数もある
-          # docker build -t ${ECR_REGISTRY}/${ECR_REPOSITORY}:${GITHUB_SHA} ./ops/app/
-          ./gradlew bootBuildImage --imageName $ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_SHA}
-          docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:${GITHUB_SHA}
+          # docker build -t $ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$GITHUB_SHA ./ops/app/
+          ./gradlew bootBuildImage --imageName $ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$GITHUB_SHA
+          docker push $ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$GITHUB_SHA
       # TaskDefinitionのimageとtagを差し替えした、新しいTaskDefinitionを作る
       - uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
@@ -116,7 +116,7 @@ jobs:
           # コンテナ名
           container-name: ${{ env.ECS_CONTAINER_NAME }}
           # 新しいイメージ名とタグ
-          image: ${{ steps.login-ecr.outputs.registry }}/${ECR_REPOSITORY}:${{ github.sha }}
+          image: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
         # あとで参照するのでid
         id: render-web-container
       # ECSサービスの更新とデプロイ
