@@ -1,6 +1,6 @@
 [
 	{
-		"name": "${APP_NAME}",
+		"name": "spring-grpc-app",
 		"image": "nginx:latest",
 		"essential": true,
 		"logConfiguration": {
