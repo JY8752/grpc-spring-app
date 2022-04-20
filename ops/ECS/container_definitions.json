@@ -1,21 +1,25 @@
-[
-	{
-		"name": "spring-grpc-app",
-		"image": "nginx:latest",
-		"essential": true,
-		"logConfiguration": {
-			"logDriver": "awslogs",
-			"options": {
-				"awslogs-region": "ap-northeast-1",
-				"awslogs-stream-prefix": "${APP_NAME}",
-				"awslogs-group": "/ecs/${APP_NAME}"
-			}
-		},
-		"portMappings": [
-			{
-				"containerPort": 80,
-				"hostPort": 80
-			}
-		]
-	}
-]
+{
+	"ipcMode": null,
+	"executionRoleArn": null,
+	"containerDefinitions": [
+		{
+			"name": "spring-grpc-app",
+			"image": "nginx:latest",
+			"essential": true,
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-region": "ap-northeast-1",
+					"awslogs-stream-prefix": "spring-grpc-app",
+					"awslogs-group": "/ecs/spring-grpc-app"
+				}
+			},
+			"portMappings": [
+				{
+					"containerPort": 80,
+					"hostPort": 80
+				}
+			]
+		}
+	]
+}
