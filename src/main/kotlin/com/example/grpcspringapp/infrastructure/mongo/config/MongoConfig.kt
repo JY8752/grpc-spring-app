@@ -4,6 +4,7 @@ import com.mongodb.ConnectionString
 import com.mongodb.MongoClientSettings
 import com.mongodb.reactivestreams.client.MongoClient
 import com.mongodb.reactivestreams.client.MongoClients
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.data.mongodb.ReactiveMongoDatabaseFactory
 import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration
@@ -20,7 +21,10 @@ class MongoConfig(
     private val mongoProperty: MongoProperty
 ) : AbstractReactiveMongoConfiguration() {
 
+    val logger = LoggerFactory.getLogger(this.javaClass)
+
     override fun getDatabaseName(): String {
+        logger.info(this.mongoProperty.mongoClientDatabase)
         return this.mongoProperty.mongoClientDatabase
     }
 
