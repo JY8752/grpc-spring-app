@@ -1,0 +1,9 @@
+server:
+  http2:
+    enabled: true
+app:
+  datasource:
+    mongodb:
+      uri: mongodb://root:password@localhost:27017/master?authSource=admin
+grpc:
+  enable-reflection: true
