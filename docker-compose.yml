@@ -28,15 +28,15 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo #これないと動かなかった？service名mongodbでないといけないのかも？
     networks:
       - app-net
-  app:
-    image: grpc-spring-app:latest
-    ports:
-      - "6565:6565"
-    depends_on:
-      - mongo
-      - mongo-express
-    networks:
-      - app-net
+#  app:
+#    image: grpc-spring-app:latest
+#    ports:
+#      - "6565:6565"
+#    depends_on:
+#      - mongo
+#      - mongo-express
+#    networks:
+#      - app-net
 networks:
   app-net:
     driver: bridge
